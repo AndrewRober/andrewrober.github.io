@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Andrew Rober Fouad Samy — ML &amp; High-Performance Systems Research</title>
+  <meta name="description" content="Machine Learning &amp; High-Performance Systems Researcher (LLM Pretraining, Tokenization, Mechanistic Interpretability, GRPO RLVR, High-D Statistics, PyTorch/CUDA &amp; .NET SIMD). CTO @ BytesGlue, Dubai, UAE." />
+  <link rel="canonical" href="https://andrewrober.github.io/" />
+  <meta property="og:title" content="Andrew Rober Fouad Samy — ML &amp; Systems Research Portfolio" />
+  <meta property="og:description" content="34-Model LLM Pretraining &amp; Superword Tokenization Study, Empirical-Bayes GRPO, Spectral Intrinsic-Dimension K-Means, and AdaTCAdamW." />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://andrewrober.github.io/" />
+  <meta property="og:image" content="https://andrewrober.github.io/assets/fig6_scaleup_300m_150m.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <style>
+:root {
+  --bg: #070c18;
+  --panel: #0f192d;
+  --panel2: #13203a;
+  --border: #1e2f4d;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --emerald: #10b981;
+  --cyan: #38bdf8;
+  --amber: #f59e0b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  background: radial-gradient(circle at top right, #112240 0%, var(--bg) 60%);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 28px 22px 72px; }
+.banner-img { width: 100%; border-radius: 16px; border: 1px solid var(--border); display: block; margin-bottom: 20px; box-shadow: 0 16px 36px rgba(0,0,0,0.45); }
+.hero-card {
+  background: linear-gradient(135deg, rgba(15,25,45,0.96), rgba(19,32,58,0.96));
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 28px;
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+.avatar { width: 112px; height: 112px; border-radius: 50%; object-fit: cover; border: 2.5px solid var(--cyan); flex-shrink: 0; }
+.hero-body { flex: 1; min-width: 270px; }
+.eyebrow { color: var(--emerald); font-family: ui-monospace, monospace; font-size: 12.5px; font-weight: 700; text-transform: uppercase; letter-spacing: 1px; }
+h1 { margin: 4px 0 6px; font-size: 30px; letter-spacing: -0.5px; }
+.sub { color: var(--cyan); font-size: 16.5px; font-weight: 600; margin-bottom: 10px; }
+.hire-box {
+  margin: 14px 0 16px; padding: 12px 16px; border-radius: 10px;
+  background: rgba(16,185,129,0.12); border: 1px solid rgba(16,185,129,0.45);
+  font-size: 14px; color: #ecfdf5;
+}
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 15px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+  border: 1px solid var(--border); background: var(--panel2); color: var(--text);
+  text-decoration: none !important;
+}
+.btn.primary { background: var(--emerald); color: #042f2e; border-color: var(--emerald); font-weight: 700; }
+.btn:hover { border-color: var(--cyan); transform: translateY(-1px); }
+h2 { margin: 38px 0 16px; font-size: 22px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 18px; }
+@media (max-width: 600px) { .grid { grid-template-columns: 1fr; } }
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 22px;
+  display: flex; flex-direction: column; justify-content: space-between;
+}
+.tag { font-size: 12px; font-family: ui-monospace, monospace; color: var(--amber); margin-bottom: 6px; }
+.card h3 { margin: 0 0 10px; font-size: 18px; line-height: 1.35; }
+.card p { margin: 0 0 16px; font-size: 14px; color: #cbd5e1; }
+.card-links { display: flex; flex-wrap: wrap; gap: 12px; font-size: 13.5px; font-weight: 600; }
+.card-links a { color: var(--emerald); }
+pre {
+  background: #060a14; border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px; overflow-x: auto; font-size: 12.5px; color: #cbd5e1;
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <img class="banner-img" src="/assets/header.png" alt="BytesGlue — Software &amp; AI Systems Research" />
+    <div class="hero-card">
+      <img class="avatar" src="/assets/portrait.jpg" alt="Andrew Rober Fouad Samy" />
+      <div class="hero-body">
+        <div class="eyebrow">Dubai, United Arab Emirates &middot; Open to Global &amp; UAE Frontier AI Roles</div>
+        <h1>Andrew Rober Fouad Samy</h1>
+        <div class="sub">ML &amp; High-Performance Systems Researcher &middot; CTO @ BytesGlue</div>
+        <div style="font-size:14.5px;color:#cbd5e1;">
+          I design mathematically grounded machine learning algorithms and bare-metal GPU / SIMD systems—spanning
+          <b>from-scratch LLM pretraining &amp; tokenization</b>, <b>mechanistic interpretability</b>,
+          <b>RLVR / GRPO post-training</b>, <b>random matrix theory</b>, and <b>production SaaS &amp; API/EDI platforms</b>.
+        </div>
+        <div class="hire-box">
+          <b>Hire / Collaborate:</b> Available for <b>Senior Research Engineer / Member of Technical Staff</b> roles
+          (Pretraining, Tokenization, Post-Training RLVR, Inference &amp; Systems) and mission-critical engineering consulting
+          &mdash; <a href="mailto:andrew.rober@bytesglue.com" style="color:#34d399;font-weight:700;">andrew.rober@bytesglue.com</a>
+          &middot; <span style="color:#cbd5e1;">+971-50-531-9937</span>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="/papers/mechanistic-phrase-tokenization/">📄 Flagship 34-Model Tokenization Paper</a>
+          <a class="btn" href="https://huggingface.co/AndrewR123" target="_blank">🤗 HuggingFace Weights &amp; Tokenizers</a>
+          <a class="btn" href="https://huggingface.co/spaces/AndrewR123/Research-Portfolio" target="_blank">🔬 Interactive Explorer</a>
+          <a class="btn" href="https://github.com/AndrewRober" target="_blank">💻 GitHub (@AndrewRober)</a>
+          <a class="btn" href="https://www.linkedin.com/in/andrew-rober/" target="_blank">🔗 LinkedIn</a>
+          <a class="btn" href="https://www.bytesglue.com" target="_blank">🌐 BytesGlue.com</a>
+        </div>
+      </div>
+    </div>
+
+    <h2>Featured Empirical Result: 30.4M &rarr; 149.6M Zero-Shot Superword Scale-Up</h2>
+    <a href="/papers/mechanistic-phrase-tokenization/">
+      <img class="banner-img" src="/assets/fig6_scaleup_300m_150m.png" alt="Stage C 300M 3-Seed &amp; Stage E 150M Compute Gearshifting" style="background:#fff;padding:8px;" />
+    </a>
+
+    <h2>Research Monographs (Google Scholar Indexed Full-Text PDFs &amp; Code)</h2>
+    <div class="grid">
+      <div class="card">
+              <div>
+                <div class="tag">LLM Pretraining · Tokenization · Mechanistic Interpretability</div>
+                <h3><a href="/papers/mechanistic-phrase-tokenization/" style="color:var(--text);">What Earns a Phrase Its Own Token? Mechanistic Multi-Word Vocabulary Allocation, Compositional-Residual Folding, and Test-Time Compute Gearshifting</a></h3>
+                <p>Controlled 34-model empirical and mechanistic Transformer pretraining study (30.4M parameters across 11 tokenizers and 3 paired seeds on 300M unique FineWeb-Edu tokens, scaling zero-shot 5x to 149.6M parameters) holding total vocabulary size (V=16,384), shared base subwords (14,336), deterministic segmentation, and bias-corrected evaluati...</p>
+              </div>
+              <div class="card-links">
+                <a href="/papers/mechanistic-phrase-tokenization/">Paper Page &amp; Abstract &rarr;</a>
+                <a href="/papers/mechanistic-phrase-tokenization.pdf" target="_blank">Direct PDF &rarr;</a>
+                <a href="https://github.com/AndrewRober/MechanisticPhraseTokenization" target="_blank">GitHub &rarr;</a>
+                <a href="https://huggingface.co/AndrewR123/MechanisticPhraseTokenization" target="_blank">HuggingFace &rarr;</a>
+              </div>
+            </div>
+<div class="card">
+              <div>
+                <div class="tag">LLM RLVR / GRPO · Block Quantization · Non-Asymptotic Statistics</div>
+                <h3><a href="/papers/kurtosis-scale-correction/" style="color:var(--text);">Beyond Bessel&#x27;s Correction: Power-Scale Concavity-Convexity Duality, Kurtosis-Optimal Shrinkage (KPS), and Empirical-Bayes GRPO</a></h3>
+                <p>Proves symbolically and empirically (on NVIDIA GB10 Grace Blackwell across Qwen2.5-1.5B-Instruct, BGE-Large, and multi-task GRPO RLVR) that Bessel&#x27;s n-1 divisor is strictly biased for every nonlinear power sigma^p (p != 2) and inadmissible in MSE on heavy-tailed neural activations. Derives the exact Kurtosis-Optimal Minimum-MSE Variance D...</p>
+              </div>
+              <div class="card-links">
+                <a href="/papers/kurtosis-scale-correction/">Paper Page &amp; Abstract &rarr;</a>
+                <a href="/papers/kurtosis-scale-correction.pdf" target="_blank">Direct PDF &rarr;</a>
+                <a href="https://github.com/AndrewRober/KurtosisScaleCorrection" target="_blank">GitHub &rarr;</a>
+                <a href="https://huggingface.co/AndrewR123/KurtosisScaleCorrection-EB-GRPO" target="_blank">HuggingFace &rarr;</a>
+              </div>
+            </div>
+<div class="card">
+              <div>
+                <div class="tag">Random Matrix Theory · MDL · High-D Transformer Embeddings</div>
+                <h3><a href="/papers/sid-kmeans/" style="color:var(--text);">Overcoming High-Dimensional Collapse and Voronoi Overfitting in K-Means: Spectral Intrinsic-Dimension Minimum Description Length (SID-KMeans)</a></h3>
+                <p>Introduces Spectral Intrinsic-Dimension Minimum Description Length (SID-KMeans), a zero-hyperparameter automatic cluster-count (K*) selection method combining exact marginal LogSumExp mixture likelihood (eliminating hard Voronoi truncation bias), Gavish-Donoho Marchenko-Pastur random-matrix bulk denoising, and Satterthwaite-Welch effectiv...</p>
+              </div>
+              <div class="card-links">
+                <a href="/papers/sid-kmeans/">Paper Page &amp; Abstract &rarr;</a>
+                <a href="/papers/sid-kmeans.pdf" target="_blank">Direct PDF &rarr;</a>
+                <a href="https://github.com/AndrewRober/IntrinsicDimKMeans" target="_blank">GitHub &rarr;</a>
+                <a href="https://huggingface.co/AndrewR123/SID-KMeans" target="_blank">HuggingFace &rarr;</a>
+              </div>
+            </div>
+<div class="card">
+              <div>
+                <div class="tag">Stochastic Optimization · Mixture-of-Experts · PyTorch CUDA &amp; SIMD</div>
+                <h3><a href="/papers/adatc-adamw/" style="color:var(--text);">Generalized Higher-Dimensional EWMA Bias Correction: Non-Stationary Drift Elimination, the Blessing of Dimensionality, and Adaptive Deep Learning Optimization</a></h3>
+                <p>Lifts Exponentially Weighted Moving Average (EWMA) bias correction from scalar stationarity to arbitrary higher-dimensional contraction operators B in R^(d x d). Proves affine-invariant cumulative-mean duality, O(1)-time exact non-stationary drift elimination (ExactTC-EWMA), Hanson-Wright O(1/d) oracle shrinkage convergence (+0.02% excess...</p>
+              </div>
+              <div class="card-links">
+                <a href="/papers/adatc-adamw/">Paper Page &amp; Abstract &rarr;</a>
+                <a href="/papers/adatc-adamw.pdf" target="_blank">Direct PDF &rarr;</a>
+                <a href="https://github.com/AndrewRober/HigherDimensionalEWMABiasCorrection" target="_blank">GitHub &rarr;</a>
+                <a href="https://huggingface.co/AndrewR123/AdaTCAdamW" target="_blank">HuggingFace &rarr;</a>
+              </div>
+            </div>
+    </div>
+
+    <h2>AI Safety &amp; Production Systems Engineering</h2>
+    <div class="grid">
+      <div class="card">
+        <div>
+          <div class="tag">Model Context Protocol (MCP) &middot; AI Agent Sandboxing</div>
+          <h3><a href="https://github.com/AndrewRober/CodexCli-GuardRails" target="_blank" style="color:var(--text);">CodexCli-GuardRails</a></h3>
+          <p>Deterministic action-risk classification, workspace containment, secret redaction, and tamper-evident payload approval gates for autonomous coding agents.</p>
+        </div>
+        <div class="card-links"><a href="https://github.com/AndrewRober/CodexCli-GuardRails" target="_blank">GitHub Repository &rarr;</a></div>
+      </div>
+      <div class="card">
+        <div>
+          <div class="tag">Multi-Product SaaS &amp; Senior Systems Delivery</div>
+          <h3><a href="https://www.bytesglue.com" target="_blank" style="color:var(--text);">BytesGlue Product Ecosystem</a></h3>
+          <p>Creator &amp; lead architect of CreekPOS (UAE VAT POS), PosMasr, Kluvan (connected AI ERP/CRM/HR workspace), UnitVO, StayReplied, LeaseExact, JobRov, and LicenseSeal.</p>
+        </div>
+        <div class="card-links"><a href="https://www.bytesglue.com/contact" target="_blank">Request Engineering Briefing &rarr;</a></div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
