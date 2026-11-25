@@ -104,7 +104,8 @@ pre {
           &middot; <span style="color:#cbd5e1;">+971-50-531-9937</span>
         </div>
         <div class="btns">
-          <a class="btn primary" href="/papers/mechanistic-phrase-tokenization/">📄 Flagship 34-Model Tokenization Paper</a>
+          <a class="btn primary" href="/papers/residual-rescaled-bf16/">📄 New: Breaking the 7-Bit BF16 Ceiling (GB10 Paper)</a>
+          <a class="btn" href="/papers/mechanistic-phrase-tokenization/">📄 34-Model Tokenization Paper</a>
           <a class="btn" href="https://huggingface.co/AndrewR123" target="_blank">🤗 HuggingFace Weights &amp; Tokenizers</a>
           <a class="btn" href="https://huggingface.co/spaces/AndrewR123/Superword-Tokenizer-Playground" target="_blank">⚡ Live Tokenizer Playground</a> <a class="btn" href="https://colab.research.google.com/github/AndrewRober/MechanisticPhraseTokenization/blob/main/notebooks/Mechanistic_Phrase_Tokenization_Demo.ipynb" target="_blank">🚀 Run in Colab</a>
           <a class="btn" href="https://github.com/AndrewRober" target="_blank">💻 GitHub (@AndrewRober)</a>
@@ -121,6 +122,19 @@ pre {
 
     <h2>Research Monographs (Google Scholar Indexed Full-Text PDFs &amp; Code)</h2>
     <div class="grid">
+      <div class="card">
+              <div>
+                <div class="tag">Mixed-Precision GPU Systems · Diffusion &amp; Flow Matching · CUDA PTX</div>
+                <h3><a href="/papers/residual-rescaled-bf16/" style="color:var(--text);">Breaking the 7-Bit BF16 Mantissa Ceiling: O(&epsilon;<sup>2/3</sup>) Residual-Rescaled Spectral Volterra&ndash;Newton Refinement and High-Noise Desingularization for Continuous-Time Generative Flows</a></h3>
+                <p>Recovers strict 24-bit IEEE-FP32 trajectory accuracy on unmodified 7-bit BF16 Tensor Cores (NVIDIA GB10 Grace Blackwell &amp; RTX 5060) via antipodal residual rescaling (9.37e-8 L2 error &amp; 44.2x speedup vs. CUDAGraph FP32 RK4 on 46.9M SwiGLU DiTs) and z=sqrt(tau) diffusion desingularization (+23.7 dB to 69.69 dB on ddpm-cifar10-32; +24.5 dB to 50.10 dB on 113.7M 256x256 ddpm-celebahq-256, beating FP32 DPM-Solver-2-100).</p>
+              </div>
+              <div class="card-links">
+                <a href="/papers/residual-rescaled-bf16/">Paper Page &amp; Abstract &rarr;</a>
+                <a href="/papers/residual-rescaled-bf16.pdf" target="_blank">Direct PDF &rarr;</a>
+                <a href="https://github.com/AndrewRober/ResidualRescaledBF16" target="_blank">GitHub &rarr;</a>
+                <a href="https://huggingface.co/AndrewR123/ResidualRescaledBF16" target="_blank">HuggingFace &rarr;</a>
+              </div>
+            </div>
       <div class="card">
               <div>
                 <div class="tag">LLM Pretraining · Tokenization · Mechanistic Interpretability</div>

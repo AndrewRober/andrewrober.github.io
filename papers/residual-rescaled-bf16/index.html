@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Breaking the 7-Bit BF16 Mantissa Ceiling: O(eps^{2/3}) Residual-Rescaled Spectral Volterra-Newton Refinement and High-Noise Desingularization for Continuous-Time Generative Flows — Andrew Rober Fouad Samy</title>
+  <meta name="description" content="Introduces Central-Difference Scaled-Perturbation BF16 Iterative Refinement (CSP-BF16-IR), recovering strict 24-bit IEEE-FP32 trajectory accuracy on unmodified 7-bit BF16 Tensor Cores across NVIDIA GB10 Grace Blackwell and RTX 5060." />
+  <link rel="canonical" href="https://andrewrober.github.io/papers/residual-rescaled-bf16/" />
+
+  <!-- Highwire Press Meta Tags for Google Scholar Indexing -->
+  <meta name="citation_title" content="Breaking the 7-Bit BF16 Mantissa Ceiling: O(eps_bf16^{2/3}) Residual-Rescaled Spectral Volterra-Newton Refinement and High-Noise Desingularization for Continuous-Time Generative Flows" />
+  <meta name="citation_author" content="Samy, Andrew Rober Fouad" />
+  <meta name="citation_author_institution" content="BytesGlue" />
+  <meta name="citation_publication_date" content="2026/11/25" />
+  <meta name="citation_online_date" content="2026/11/25" />
+  <meta name="citation_pdf_url" content="https://andrewrober.github.io/papers/residual-rescaled-bf16.pdf" />
+  <meta name="citation_language" content="en" />
+  <meta name="citation_technical_report_institution" content="BytesGlue AI &amp; Systems Research" />
+
+  <meta property="og:title" content="Breaking the 7-Bit BF16 Mantissa Ceiling: O(eps^{2/3}) Residual-Rescaled Spectral Volterra-Newton Refinement (CSP-BF16-IR)" />
+  <meta property="og:description" content="Recovers 24-bit IEEE-FP32 ODE &amp; Diffusion trajectory precision on unmodified 7-bit BF16 Tensor Cores (9.37e-8 error, 44.2x faster than FP32 RK4 on NVIDIA GB10; +24.5 dB on 256x256 CelebA-HQ)." />
+  <meta property="og:type" content="article" />
+  <meta property="og:url" content="https://andrewrober.github.io/papers/residual-rescaled-bf16/" />
+  <meta property="og:image" content="https://andrewrober.github.io/assets/fig6_celebahq256_scaleup.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "ScholarlyArticle", "headline": "Breaking the 7-Bit BF16 Mantissa Ceiling: O(eps_bf16^{2/3}) Residual-Rescaled Spectral Volterra-Newton Refinement and High-Noise Desingularization for Continuous-Time Generative Flows", "author": [{"@type": "Person", "name": "Andrew Rober Fouad Samy", "affiliation": "BytesGlue"}], "datePublished": "2026-11-25", "description": "Introduces Central-Difference Scaled-Perturbation BF16 Iterative Refinement (CSP-BF16-IR), an intralayer-free mixed-precision spectral Volterra-Newton framework that recovers strict 24-bit IEEE-FP32 trajectory precision while executing all dense trajectory and Jacobian sweeps on unmodified 7-bit BF16 Tensor Cores. Proves O(eps_bf16^{2/3}) antipodal Hessian cancellation (3.68x single-sweep JVP gain at sigma_c = 2^{-3} = 0.125) and z = sqrt(tau) root-time diffusion desingularization eliminating the 152.2x 1/alpha_T quantization blowup. Verified on NVIDIA GB10 Grace Blackwell Superchip (aarch64, CUDA 13.0) and NVIDIA RTX 5060 (x86_64): reaches 9.37e-8 L2 error on 46.91M SwiGLU DiTs (44.2x faster than 512-NFE CUDAGraph FP32 RK4; 170x in ParaFlow-BF16), beats ParaDiGMS in both speed and +16.2 dB PSNR on 2D flow matching, and shatters the BF16 ceiling on official google/ddpm-cifar10-32 (69.69 dB, 86.08 dB vs. exact FP32 collocation) and 64x-larger 256x256 google/ddpm-celebahq-256 (113.67M UNet, +24.45 dB gain, beating FP32 DPM-Solver-2-100 by +3.90 dB).", "url": "https://andrewrober.github.io/papers/residual-rescaled-bf16/", "encoding": {"@type": "MediaObject", "contentUrl": "https://andrewrober.github.io/papers/residual-rescaled-bf16.pdf", "encodingFormat": "application/pdf"}}</script>
+  <style>
+:root {
+  --bg: #070c18;
+  --panel: #0f192d;
+  --panel2: #13203a;
+  --border: #1e2f4d;
+  --text: #f8fafc;
+  --muted: #94a3b8;
+  --emerald: #10b981;
+  --cyan: #38bdf8;
+  --amber: #f59e0b;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, sans-serif;
+  background: radial-gradient(circle at top right, #112240 0%, var(--bg) 60%);
+  color: var(--text);
+  line-height: 1.6;
+}
+a { color: var(--cyan); text-decoration: none; }
+a:hover { text-decoration: underline; }
+.wrap { max-width: 1120px; margin: 0 auto; padding: 28px 22px 72px; }
+.btns { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.btn {
+  display: inline-flex; align-items: center; gap: 6px;
+  padding: 8px 15px; border-radius: 999px; font-size: 13.5px; font-weight: 600;
+  border: 1px solid var(--border); background: var(--panel2); color: var(--text);
+  text-decoration: none !important;
+}
+.btn.primary { background: var(--emerald); color: #042f2e; border-color: var(--emerald); font-weight: 700; }
+.btn:hover { border-color: var(--cyan); transform: translateY(-1px); }
+h2 { margin: 38px 0 16px; font-size: 22px; border-bottom: 1px solid var(--border); padding-bottom: 8px; }
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: 14px; padding: 26px;
+}
+.tag { font-size: 12px; font-family: ui-monospace, monospace; color: var(--amber); margin-bottom: 6px; }
+pre {
+  background: #060a14; border: 1px solid var(--border); border-radius: 10px;
+  padding: 14px; overflow-x: auto; font-size: 12.5px; color: #cbd5e1;
+}
+</style>
+</head>
+<body>
+  <div class="wrap">
+    <p style="margin:0 0 16px;"><a href="https://andrewrober.github.io/">&larr; Back to Andrew Rober Research &amp; Engineering Portfolio</a></p>
+    <div class="card">
+      <div>
+        <div class="tag">Mixed-Precision GPU Systems · Diffusion &amp; Flow Matching · Spectral Numerical Analysis &middot; Published 2026/11/25</div>
+        <h1 style="font-size:26px;margin:6px 0 12px;">Breaking the 7-Bit BF16 Mantissa Ceiling: O(&epsilon;<sub>bf16</sub><sup>2/3</sup>) Residual-Rescaled Spectral Volterra&ndash;Newton Refinement and High-Noise Desingularization for Continuous-Time Generative Flows</h1>
+        <div style="font-size:15px;color:#e2e8f0;margin-bottom:18px;">
+          <b>Andrew Rober Fouad Samy</b> &middot; BytesGlue (Dubai, United Arab Emirates) &middot;
+          <a href="mailto:andrew.rober@bytesglue.com">andrew.rober@bytesglue.com</a>
+        </div>
+        <div class="btns" style="margin-bottom:22px;">
+          <a class="btn primary" href="https://andrewrober.github.io/papers/residual-rescaled-bf16.pdf" target="_blank">📄 Download Full Paper (PDF)</a>
+          <a class="btn" href="https://github.com/AndrewRober/ResidualRescaledBF16" target="_blank">💻 GitHub Code, PTX Kernels &amp; Benchmarks</a>
+          <a class="btn" href="https://huggingface.co/AndrewR123/ResidualRescaledBF16" target="_blank">🤗 HuggingFace Repository</a>
+          <a class="btn" href="https://colab.research.google.com/github/AndrewRober/ResidualRescaledBF16/blob/main/notebooks/CSP_BF16_IR_Demo.ipynb" target="_blank">🚀 Run in Colab</a>
+          <a class="btn" href="https://www.linkedin.com/in/andrew-rober/" target="_blank">🔗 LinkedIn</a>
+        </div>
+        <h2 style="margin-top:10px;">Abstract</h2>
+        <p style="font-size:15.5px;color:#e2e8f0;line-height:1.7;">Modern AI accelerators achieve their highest arithmetic throughput and lowest memory-bandwidth pressure in BFLOAT16 (BF16), whose 7-bit significand imposes a coarse unit roundoff &epsilon;<sub>bf16</sub> = 2<sup>&minus;8</sup>. Consequently, standard sequential and time-parallel continuous-time generative solvers&mdash;including DDIM, DPM-Solver-2, and sliding-window Picard iteration (ParaDiGMS)&mdash;hit a permanent 7-bit fixed-point stagnation wall once trajectory corrections fall below 2<sup>&minus;7</sup>||X|| (~2.1&times;10<sup>&minus;3</sup> relative L<sub>2</sub> error; 38&ndash;46 dB PSNR). On pretrained variance-preserving diffusion models, dividing BF16 noise predictions by &alpha;<sub>T</sub> &approx; 6.57&times;10<sup>&minus;3</sup> at t=T further amplifies quantization noise by 152.2&times;. We introduce <b>Central-Difference Scaled-Perturbation BF16 Iterative Refinement (CSP-BF16-IR)</b>, an intralayer-free mixed-precision spectral Volterra&ndash;Newton framework that recovers strict 24-bit IEEE-FP32 trajectory precision while executing all dense trajectory and Jacobian sweeps on unmodified 7-bit BF16 Tensor Cores. Dynamically upscaling sparse FP32 Clenshaw&ndash;Curtis Volterra defect vectors R<sub>k</sub> via antipodal pairs X<sub>k</sub> &plusmn; s<sub>c</sub>R<sub>k</sub> (&sigma;<sub>c</sub> = 2<sup>&minus;3</sup> = 0.125) cancels the even Hessian identically within a single fused [2M, d] BF16 Tensor-Core batch, improving directional JVP error from O(&epsilon;<sup>1/2</sup>) to O(&epsilon;<sup>2/3</sup>) (3.68&times; single-sweep gain). Combined with root-time z = &radic;&tau; high-noise desingularization and raw PTX + CUDAGraph execution on an <b>NVIDIA GB10 Grace Blackwell Superchip</b> (aarch64, CUDA 13.0) and <b>NVIDIA RTX 5060</b> (x86_64), CSP-BF16-IR reaches 9.37&times;10<sup>&minus;8</sup> L<sub>2</sub> error on 46.91M SwiGLU DiTs (44.2&times; faster than 512-NFE CUDAGraph FP32 RK4; 170&times; in ParaFlow-BF16), beats ParaDiGMS in both speed and +16.2 dB PSNR on 2D flow matching, and shatters the BF16 ceiling on official <code>google/ddpm-cifar10-32</code> (69.69 dB; 86.08 dB vs. exact FP32 collocation) and 64&times;-larger 256&times;256 <code>google/ddpm-celebahq-256</code> (113.67M UNet, +24.45 dB gain to 50.10 dB, surpassing 100-NFE FP32 DPM-Solver-2 by +3.90 dB) with zero hyperparameter retuning.</p>
+        <h2>Embedded Manuscript Preview</h2>
+        <iframe src="https://andrewrober.github.io/papers/residual-rescaled-bf16.pdf" width="100%" height="680" style="border:1px solid var(--border);border-radius:10px;background:#fff;"></iframe>
+        <h2>BibTeX Citation</h2>
+        <pre>@article{samy2026breaking,
+  title={Breaking the 7-Bit BF16 Mantissa Ceiling: O(eps_bf16^{2/3}) Residual-Rescaled Spectral Volterra--Newton Refinement and High-Noise Desingularization for Continuous-Time Generative Flows},
+  author={Samy, Andrew Rober Fouad},
+  year={2026},
+  url={https://andrewrober.github.io/papers/residual-rescaled-bf16/}
+}</pre>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
